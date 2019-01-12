@@ -4,7 +4,7 @@ class character {
   float cHeight;
   float cX;
   float cY;
-  float cSpeed;
+  float cSpeedX;
   float cSpeedY;
   boolean jumping;
   boolean forwardFacing;
@@ -12,8 +12,8 @@ class character {
     cWidth=40;
     cHeight=90;
     cX=450;
-    cY=100;//height-height/4-cHeight;
-    cSpeed=5;
+    cY=height-height/4-cHeight;
+    cSpeedX=5;
     cSpeedY=0;
     forwardFacing=true;
     jumping=false;
@@ -32,24 +32,25 @@ class character {
   void move() {
     if (keyCode==RIGHT) {
       forwardFacing=true;
-      cX=cX+cSpeed;
+      cX=cX+cSpeedX;
       if (cX>=width/3) {
         forward=true;
       }
     }
     if (keyCode==LEFT) {
       forwardFacing=false;
-      cX=cX-cSpeed;
+      cX=cX-cSpeedX;
     }
   }
   void jump() {
     jumping=true;
    cSpeedY=-10;
+   cSpeedX=10;
   }
   void fall() {
-    if(cY<height-height/4-cHeight){
+    if(cY<groundTop-cHeight){
       cSpeedY=cSpeedY+.2;
-    } else if(!jumping&&cY>height-height/4-cHeight){
+    } else if(!jumping&&cY>groundTop-cHeight){
       cSpeedY=0;
     }
       cY=cY+cSpeedY;
