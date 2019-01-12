@@ -5,16 +5,18 @@ class character {
   float cX;
   float cY;
   float cSpeed;
-  boolean falling;
+  float cSpeedY;
+  boolean jumping;
   boolean forwardFacing;
   character() {
     cWidth=40;
     cHeight=90;
     cX=450;
-    cY=height-height/4-cHeight;
-    cSpeed=3;
+    cY=100;//height-height/4-cHeight;
+    cSpeed=5;
+    cSpeedY=0;
     forwardFacing=true;
-    falling=false;
+    jumping=false;
   }
   void display() {
     if (forwardFacing) {
@@ -39,26 +41,20 @@ class character {
       forwardFacing=false;
       cX=cX-cSpeed;
     }
-
-
-    //if (keyPressed&&keyCode==RIGHT) {
-
-    //}
   }
   void jump() {
-    if(cY>=300){
-    cY=cY-2;
-    } 
-    if(cY==300){
-      falling=true;
-    }
+    jumping=true;
+   cSpeedY=-10;
   }
   void fall() {
-
-    if (falling&&cY<=height-height/4-cHeight) {
-
-      cY=cY+1;
-      // cY=cY-10;
+    if(cY<height-height/4-cHeight){
+      cSpeedY=cSpeedY+.2;
+    } else if(!jumping&&cY>height-height/4-cHeight){
+      cSpeedY=0;
     }
+      cY=cY+cSpeedY;
+        if(cY>=300){
+     jumping=false;
+   }
   }
 }

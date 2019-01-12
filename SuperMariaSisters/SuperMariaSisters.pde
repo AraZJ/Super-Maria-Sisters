@@ -14,13 +14,12 @@ void draw(){
   noStroke();
   rect(0,height-height/4,width,height-height/4);  
   Maria.display();
-  
+  Maria.fall();
+  //println(Maria.jumping);
+}
+void keyPressed(){
+  Maria.move();
   if(keyCode==UP){
   Maria.jump();
   }
-  Maria.fall();
-  println(Maria.falling);
-}
-void keyPressed(){
-  Maria.move(); 
 }
