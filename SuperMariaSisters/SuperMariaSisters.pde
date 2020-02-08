@@ -5,13 +5,13 @@ block aBlock;
 void setup() {
   size(900, 600);
   background(0, 200, 250);
-   groundTop=height-height/4;
+   groundTop=height-height/4; //450
    aBlock=new block();
   Maria=new character();
   
   fill(0, 200, 0);
   noStroke();
-  rect(0, height-height/4, width, height-height/4);
+  rect(0, groundTop, width, groundTop);
  
 }
 void draw() {
